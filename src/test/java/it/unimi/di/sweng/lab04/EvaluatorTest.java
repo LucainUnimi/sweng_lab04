@@ -59,4 +59,19 @@ public class EvaluatorTest {
                 )
         )).isEqualTo(HandRank.HIGH_CARD);
     }
+    @Test
+    public void testThreeOfAKindEvaluator() {
+        ChainedHandEvaluator evaluator = new ThreeOfAKindEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.ACE, Suit.DIAMONDS),
+                                Card.get(Rank.ACE, Suit.HEARTS),
+                                Card.get(Rank.ACE, Suit.CLUBS),
+                                Card.get(Rank.NINE, Suit.SPADES),
+                                Card.get(Rank.JACK, Suit.HEARTS)
+                        )
+                )
+        )).isEqualTo(HandRank.THREE_OF_A_KIND);
+    }
 }
