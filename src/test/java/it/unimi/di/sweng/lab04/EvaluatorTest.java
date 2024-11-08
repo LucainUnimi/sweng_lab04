@@ -119,4 +119,34 @@ public class EvaluatorTest {
                 )
         )).isEqualTo(HandRank.HIGH_CARD);
     }
+    @Test
+    public void testFlushEvaluatorTrue() {
+        ChainedHandEvaluator evaluator = new FlushEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.NINE, Suit.DIAMONDS),
+                                Card.get(Rank.THREE, Suit.DIAMONDS),
+                                Card.get(Rank.FOUR, Suit.DIAMONDS),
+                                Card.get(Rank.FIVE, Suit.DIAMONDS),
+                                Card.get(Rank.SIX, Suit.DIAMONDS)
+                        )
+                )
+        )).isEqualTo(HandRank.FLUSH);
+    }
+    @Test
+    public void testFlushEvaluatorFalse() {
+        ChainedHandEvaluator evaluator = new FlushEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.NINE, Suit.DIAMONDS),
+                                Card.get(Rank.THREE, Suit.HEARTS),
+                                Card.get(Rank.FOUR, Suit.CLUBS),
+                                Card.get(Rank.FIVE, Suit.SPADES),
+                                Card.get(Rank.SIX, Suit.HEARTS)
+                        )
+                )
+        )).isEqualTo(HandRank.FLUSH);
+    }
 }
