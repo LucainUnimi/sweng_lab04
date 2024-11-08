@@ -24,7 +24,7 @@ public class PokerTable implements Iterable<PokerHand> {
     }
 
     public @NotNull PokerHand getHand(int player) {
-        return null;
+        return players.get(player);
     }
 
     @Override
