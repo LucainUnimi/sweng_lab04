@@ -179,4 +179,19 @@ public class EvaluatorTest {
                 )
         )).isEqualTo(HandRank.HIGH_CARD);
     }
+    @Test
+    public void testFourOfAKindEvaluatortrue() {
+        ChainedHandEvaluator evaluator = new FourOfAKindEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.FIVE, Suit.DIAMONDS),
+                                Card.get(Rank.FIVE, Suit.CLUBS),
+                                Card.get(Rank.FIVE, Suit.SPADES),
+                                Card.get(Rank.FIVE, Suit.HEARTS),
+                                Card.get(Rank.SIX, Suit.DIAMONDS)
+                        )
+                )
+        )).isEqualTo(HandRank.FOUR_OF_A_KIND);
+    }
 }
