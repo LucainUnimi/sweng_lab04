@@ -27,4 +27,36 @@ public class EvaluatorTest {
                 )
         )).isEqualTo(HandRank.ONE_PAIR);
     }
+
+    @Test
+    public void testTwoPairHandEvaluatorTrue() {
+        ChainedHandEvaluator evaluator = new TwoPairHandEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.ACE, Suit.DIAMONDS),
+                                Card.get(Rank.ACE, Suit.HEARTS),
+                                Card.get(Rank.KING, Suit.CLUBS),
+                                Card.get(Rank.KING, Suit.SPADES),
+                                Card.get(Rank.JACK, Suit.HEARTS)
+                        )
+                )
+        )).isEqualTo(HandRank.TWO_PAIR);
+    }
+
+    @Test
+    public void testTwoPairHandEvaluatorFalse() {
+        ChainedHandEvaluator evaluator = new TwoPairHandEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.ACE, Suit.DIAMONDS),
+                                Card.get(Rank.ACE, Suit.HEARTS),
+                                Card.get(Rank.KING, Suit.CLUBS),
+                                Card.get(Rank.NINE, Suit.SPADES),
+                                Card.get(Rank.JACK, Suit.HEARTS)
+                        )
+                )
+        )).isEqualTo(HandRank.HIGH_CARD);
+    }
 }
