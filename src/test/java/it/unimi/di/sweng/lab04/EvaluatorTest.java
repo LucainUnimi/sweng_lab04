@@ -149,4 +149,19 @@ public class EvaluatorTest {
                 )
         )).isEqualTo(HandRank.HIGH_CARD);
     }
+    @Test
+    public void testFullEvaluatortrue() {
+        ChainedHandEvaluator evaluator = new FullEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.NINE, Suit.DIAMONDS),
+                                Card.get(Rank.NINE, Suit.SPADES),
+                                Card.get(Rank.NINE, Suit.CLUBS),
+                                Card.get(Rank.SIX, Suit.CLUBS),
+                                Card.get(Rank.SIX, Suit.DIAMONDS)
+                        )
+                )
+        )).isEqualTo(HandRank.FLUSH);
+    }
 }
