@@ -30,7 +30,7 @@ public class PokerHandTest {
   @Test
   void newPokerHandTest() {
     PokerHand hand = new PokerHand(List.of(THREE_OF_A_KIND_CARDS));
-    assertThat(hand).contains(null);
+    assertThat(hand).contains(THREE_OF_A_KIND_CARDS);
   }
 
 }

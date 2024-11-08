@@ -17,7 +17,7 @@ public class PokerHand implements Iterable<Card> {
 
     @Override
     public @NotNull Iterator<Card> iterator() {
-        return null;
+        return Arrays.stream(cards).iterator();
     }
 }
 
