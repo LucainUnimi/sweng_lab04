@@ -17,7 +17,23 @@ public class PokerHand implements Iterable<Card> {
     }
 
     public HandRank getPoints() {
-        return HandRank.STRAIGHT_FLUSH;
+        return new StraightFlushEvaluator(
+                new FourOfAKindEvaluator(
+                        new FullHouseEvaluator(
+                                new FlushEvaluator(
+                                        new StraightEvaluator(
+                                                new ThreeOfAKindEvaluator(
+                                                        new TwoPairHandEvaluator(
+                                                                new OnePairHandEvaluator(
+                                                                        ChainedHandEvaluator.HIGH_CARD
+                                                                )
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+                )
+        ).handEvaluator(this);
     }
 
     @Override
