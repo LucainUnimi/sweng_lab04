@@ -6,11 +6,11 @@ import ca.mcgill.cs.stg.solitaire.cards.Rank;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class FullEvaluator implements ChainedHandEvaluator {
+public class FullHouseEvaluator implements ChainedHandEvaluator {
 
     private final ChainedHandEvaluator next;
 
-    FullEvaluator(ChainedHandEvaluator next) {
+    FullHouseEvaluator(ChainedHandEvaluator next) {
         this.next = next;
     }
 

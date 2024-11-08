@@ -151,7 +151,7 @@ public class EvaluatorTest {
     }
     @Test
     public void testFullEvaluatortrue() {
-        ChainedHandEvaluator evaluator = new FullEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        ChainedHandEvaluator evaluator = new FullHouseEvaluator(ChainedHandEvaluator.HIGH_CARD);
         assertThat(evaluator.handEvaluator(
                 new PokerHand(
                         List.of(

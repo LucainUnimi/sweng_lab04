@@ -27,10 +27,27 @@ public class PokerHandTest {
           Card.get (Rank. ACE, Suit. DIAMONDS)
   };
 
+  final static private Card[] PokerHand = {
+          Card.get (Rank.TWO, Suit. HEARTS), Card.get (Rank. THREE, Suit. HEARTS) , Card. get (Rank. FIVE, Suit. HEARTS), Card.get (Rank. FOUR, Suit. HEARTS),
+          Card.get (Rank. SIX, Suit. HEARTS)
+  };
+
   @Test
   void newPokerHandTest() {
     PokerHand hand = new PokerHand(List.of(THREE_OF_A_KIND_CARDS));
     assertThat(hand).contains(THREE_OF_A_KIND_CARDS);
+  }
+
+  @Test
+  void getPointsTest() {
+    PokerHand hand = new PokerHand(List.of(THREE_OF_A_KIND_CARDS));
+    assertThat(hand.getPoints()).isEqualTo(HandRank.THREE_OF_A_KIND);
+  }
+
+  @Test
+  void getPointsTest2() {
+    PokerHand hand = new PokerHand(List.of(PokerHand));
+    assertThat(hand.getPoints()).isEqualTo(HandRank.STRAIGHT_FLUSH);
   }
 
 }
