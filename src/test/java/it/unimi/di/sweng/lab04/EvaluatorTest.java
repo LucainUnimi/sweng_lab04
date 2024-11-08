@@ -201,9 +201,9 @@ public class EvaluatorTest {
                 new PokerHand(
                         List.of(
                                 Card.get(Rank.FIVE, Suit.DIAMONDS),
-                                Card.get(Rank.FIVE, Suit.CLUBS),
-                                Card.get(Rank.FIVE, Suit.SPADES),
-                                Card.get(Rank.FIVE, Suit.HEARTS),
+                                Card.get(Rank.SEVEN, Suit.DIAMONDS),
+                                Card.get(Rank.EIGHT, Suit.DIAMONDS),
+                                Card.get(Rank.NINE, Suit.DIAMONDS),
                                 Card.get(Rank.SIX, Suit.DIAMONDS)
                         )
                 )
