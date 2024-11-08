@@ -33,4 +33,10 @@ public class PokerHandTest {
     assertThat(hand).contains(THREE_OF_A_KIND_CARDS);
   }
 
+  @Test
+  void getPointsTest() {
+    PokerHand hand = new PokerHand(List.of(THREE_OF_A_KIND_CARDS));
+    assertThat(hand.getPoints()).isEqualTo(HandRank.THREE_OF_A_KIND);
+  }
+
 }
