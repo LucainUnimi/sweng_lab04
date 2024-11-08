@@ -61,7 +61,7 @@ public class EvaluatorTest {
     }
     @Test
     public void testThreeOfAKindEvaluator() {
-        ChainedHandEvaluator evaluator = new TwoPairHandEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        ChainedHandEvaluator evaluator = new ThreeOfAKindEvaluator(ChainedHandEvaluator.HIGH_CARD);
         assertThat(evaluator.handEvaluator(
                 new PokerHand(
                         List.of(
