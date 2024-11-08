@@ -147,6 +147,6 @@ public class EvaluatorTest {
                                 Card.get(Rank.SIX, Suit.HEARTS)
                         )
                 )
-        )).isEqualTo(HandRank.FLUSH);
+        )).isEqualTo(HandRank.HIGH_CARD);
     }
 }

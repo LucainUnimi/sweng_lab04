@@ -26,8 +26,7 @@ public class FlushEvaluator implements ChainedHandEvaluator {
     @Override
     public HandRank handEvaluator(PokerHand hand) {
         if(flush(hand)) {
-            return null;
-            //return HandRank.FLUSH;
+            return HandRank.FLUSH;
         }
         return next.handEvaluator(hand);
     }
