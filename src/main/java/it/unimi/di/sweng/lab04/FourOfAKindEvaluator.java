@@ -4,7 +4,6 @@ import ca.mcgill.cs.stg.solitaire.cards.Card;
 import ca.mcgill.cs.stg.solitaire.cards.Rank;
 
 import java.util.EnumMap;
-import java.util.List;
 import java.util.Map;
 
 public class FourOfAKindEvaluator implements ChainedHandEvaluator {

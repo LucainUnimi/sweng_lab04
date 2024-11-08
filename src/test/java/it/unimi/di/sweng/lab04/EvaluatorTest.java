@@ -194,4 +194,19 @@ public class EvaluatorTest {
                 )
         )).isEqualTo(HandRank.FOUR_OF_A_KIND);
     }
+    @Test
+    public void testStraightFlushtestTrue() {
+        ChainedHandEvaluator evaluator = new StraightFlushEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.FIVE, Suit.DIAMONDS),
+                                Card.get(Rank.SEVEN, Suit.DIAMONDS),
+                                Card.get(Rank.EIGHT, Suit.DIAMONDS),
+                                Card.get(Rank.NINE, Suit.DIAMONDS),
+                                Card.get(Rank.SIX, Suit.DIAMONDS)
+                        )
+                )
+        )).isEqualTo(HandRank.STRAIGHT_FLUSH);
+    }
 }
