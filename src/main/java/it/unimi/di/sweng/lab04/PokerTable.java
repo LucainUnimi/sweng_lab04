@@ -1,6 +1,5 @@
 package it.unimi.di.sweng.lab04;
 
-
 import ca.mcgill.cs.stg.solitaire.cards.Card;
 import ca.mcgill.cs.stg.solitaire.cards.Deck;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +21,10 @@ public class PokerTable implements Iterable<PokerHand> {
             }
             players.add(new PokerHand(temp));
         }
+    }
+
+    public @NotNull PokerHand getHand(int player) {
+        return players.get(player);
     }
 
     @Override
