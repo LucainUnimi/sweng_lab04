@@ -1,5 +1,11 @@
 package it.unimi.di.sweng.lab04;
 
+import ca.mcgill.cs.stg.solitaire.cards.Card;
+import ca.mcgill.cs.stg.solitaire.cards.Rank;
+
+import java.util.EnumMap;
+import java.util.Map;
+
 public class TwoPairHandEvaluator implements ChainedHandEvaluator{
 
     private final ChainedHandEvaluator next;
@@ -9,7 +15,12 @@ public class TwoPairHandEvaluator implements ChainedHandEvaluator{
     }
 
     private boolean TwoPair(PokerHand hand) {
-        return false;
+        Map<Rank, Integer> rankCount = new EnumMap<>(Rank.class);
+        for (Card card: hand) {
+            Rank rank = card.getRank();
+            rankCount.put(rank, rankCount.getOrDefault(rank, 0) + 1);
+        }
+        return rankCount.values().stream().filter(count -> count == 2).count() == 2;
     }
 
     @Override
