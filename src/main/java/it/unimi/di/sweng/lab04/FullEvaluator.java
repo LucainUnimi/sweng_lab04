@@ -1,5 +1,11 @@
 package it.unimi.di.sweng.lab04;
 
+import ca.mcgill.cs.stg.solitaire.cards.Card;
+import ca.mcgill.cs.stg.solitaire.cards.Rank;
+
+import java.util.EnumMap;
+import java.util.Map;
+
 public class FullEvaluator implements ChainedHandEvaluator {
 
     private final ChainedHandEvaluator next;
@@ -9,7 +15,11 @@ public class FullEvaluator implements ChainedHandEvaluator {
     }
 
     private boolean fullHouse(PokerHand hand) {
-        return new ThreeOfAKindEvaluator(new OnePairHandEvaluator(null)).handEvaluator(hand) == HandRank.FULL_HOUSE;
+        Map<Rank, Integer> rankCount = new EnumMap<>(Rank.class);
+        for (Card card : hand) {
+            rankCount.put(card.getRank(), rankCount.getOrDefault(card.getRank(), 0) + 1);
+        }
+        return rankCount.containsValue(3) && rankCount.containsValue(2);
     }
 
     @Override
