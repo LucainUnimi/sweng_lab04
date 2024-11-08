@@ -91,7 +91,7 @@ public class EvaluatorTest {
     }
     @Test
     public void testStraightTestTrue() {
-        ChainedHandEvaluator evaluator = new ThreeOfAKindEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        ChainedHandEvaluator evaluator = new StraightEvaluator(ChainedHandEvaluator.HIGH_CARD);
         assertThat(evaluator.handEvaluator(
                 new PokerHand(
                         List.of(
@@ -102,6 +102,21 @@ public class EvaluatorTest {
                                 Card.get(Rank.SIX, Suit.HEARTS)
                         )
                 )
-        )).isEqualTo(HandRank.THREE_OF_A_KIND);
+        )).isEqualTo(HandRank.STRAIGHT);
+    }
+    @Test
+    public void testStraightTestFalse() {
+        ChainedHandEvaluator evaluator = new StraightEvaluator(ChainedHandEvaluator.HIGH_CARD);
+        assertThat(evaluator.handEvaluator(
+                new PokerHand(
+                        List.of(
+                                Card.get(Rank.NINE, Suit.DIAMONDS),
+                                Card.get(Rank.THREE, Suit.HEARTS),
+                                Card.get(Rank.FOUR, Suit.CLUBS),
+                                Card.get(Rank.FIVE, Suit.SPADES),
+                                Card.get(Rank.SIX, Suit.HEARTS)
+                        )
+                )
+        )).isEqualTo(HandRank.HIGH_CARD);
     }
 }
