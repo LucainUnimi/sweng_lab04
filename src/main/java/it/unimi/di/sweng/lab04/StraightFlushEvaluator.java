@@ -25,7 +25,6 @@ public class StraightFlushEvaluator implements ChainedHandEvaluator {
     @Override
     public HandRank handEvaluator(PokerHand hand) {
         if (StraightFlush(hand)) return HandRank.STRAIGHT_FLUSH;
-        System.out.println(StraightFlush(hand));
         return next.handEvaluator(hand);
     }
 }
