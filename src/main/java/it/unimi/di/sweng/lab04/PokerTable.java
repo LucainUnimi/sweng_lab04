@@ -33,6 +33,15 @@ public class PokerTable implements Iterable<PokerHand> {
     }
 
     public void change(int player, List<Card> toChange) {
-        //players.set(player, new PokerHand(toChange));
+        List<Card> temp = new ArrayList<>();
+        PokerHand oldHand = players.get(player);
+        for (Card card : oldHand) {
+            if (toChange.contains(card)) {
+                temp.add(deck.draw());
+            } else {
+                temp.add(card);
+            }
+        }
+        players.set(player, new PokerHand(temp));
     }
 }
