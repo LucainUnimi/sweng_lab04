@@ -35,7 +35,7 @@ public class PokerHandTest {
   @Test
   void newPokerHandTest() {
     PokerHand hand = new PokerHand(List.of(THREE_OF_A_KIND_CARDS));
-    assertThat(hand).contains(THREE_OF_A_KIND_CARDS);
+    assertThat((Iterable<Card>)hand).contains(THREE_OF_A_KIND_CARDS);
   }
 
   @Test
@@ -48,6 +48,21 @@ public class PokerHandTest {
   void getPointsTest2() {
     PokerHand hand = new PokerHand(List.of(PokerHand));
     assertThat(hand.getPoints()).isEqualTo(HandRank.STRAIGHT_FLUSH);
+  }
+
+  @Test
+  void compareHandTest() {
+    assertThat(new PokerHand(List.of(THREE_OF_A_KIND_CARDS)).compareTo(new PokerHand(List.of(PokerHand)))).isNegative();
+  }
+
+  @Test
+  void compareHandTest2() {
+    assertThat(new PokerHand(List.of(PokerHand)).compareTo(new PokerHand(List.of(PokerHand)))).isZero();
+  }
+
+  @Test
+  void compareHandTest3() {
+    assertThat(new PokerHand(List.of(PokerHand)).compareTo(new PokerHand(List.of(THREE_OF_A_KIND_CARDS)))).isPositive();
   }
 
 }

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-public class PokerHand implements Iterable<Card> {
+public class PokerHand implements Iterable<Card>, Comparable<PokerHand> {
     private final Card[] cards;
 
     public PokerHand(List<Card> cards) {
@@ -39,6 +39,11 @@ public class PokerHand implements Iterable<Card> {
     @Override
     public @NotNull Iterator<Card> iterator() {
         return Arrays.stream(cards).iterator();
+    }
+
+    @Override
+    public int compareTo(@NotNull PokerHand o) {
+        return getPoints().compareTo(o.getPoints());
     }
 }
 
