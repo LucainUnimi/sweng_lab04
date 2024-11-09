@@ -11,6 +11,7 @@ import ca.mcgill.cs.stg.solitaire.cards.Suit;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -63,6 +64,22 @@ public class PokerHandTest {
   @Test
   void compareHandTest3() {
     assertThat(new PokerHand(List.of(PokerHand)).compareTo(new PokerHand(List.of(THREE_OF_A_KIND_CARDS)))).isPositive();
+  }
+
+  @Test
+  void iteratorSortedTest() {
+    PokerTable table = new PokerTable(5);
+    Iterator<Integer> it = table.iteratorSortedPoints();
+    HandRank prec = HandRank.STRAIGHT_FLUSH;
+    boolean sorted = true;
+    while (it.hasNext()) {
+      Integer i = it.next();
+      if (prec.compareTo(table.getHand(i).getPoints()) < 0) {
+        sorted = false;
+      }
+      prec = table.getHand(i).getPoints();
+    }
+    assertThat(sorted).isTrue();
   }
 
 }

@@ -44,4 +44,8 @@ public class PokerTable implements Iterable<PokerHand> {
         }
         players.set(player, new PokerHand(temp));
     }
+
+    public @NotNull Iterator<Integer> iteratorSortedPoints() {
+        return players.stream().sorted((e1, e2) -> e2.compareTo(e1)).map(players::indexOf).iterator();
+    }
 }
