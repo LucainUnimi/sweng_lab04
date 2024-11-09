@@ -43,7 +43,7 @@ public class PokerHand implements Iterable<Card>, Comparable<PokerHand> {
 
     @Override
     public int compareTo(@NotNull PokerHand o) {
-        return 0;
+        return getPoints().compareTo(o.getPoints());
     }
 }
 
