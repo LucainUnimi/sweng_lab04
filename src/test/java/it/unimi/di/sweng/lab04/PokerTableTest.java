@@ -1,5 +1,6 @@
 package it.unimi.di.sweng.lab04;
 
+import ca.mcgill.cs.stg.solitaire.cards.Card;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -31,7 +32,7 @@ class PokerTableTest {
             hand = iterator.next();
         }
 
-        assertThat(hand).isEqualTo(table.getHand(n));
+        assertThat((Iterable<Card>) hand).isEqualTo(table.getHand(n));
     }
 
 }
